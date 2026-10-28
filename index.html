@@ -98,6 +98,8 @@ body.category-mode footer{margin-top:0}
 body.drawer-open{overflow:hidden}
 body.category-mode .menu-toggle{color:#171815}
 @media(max-width:600px){.side-drawer{width:calc(100vw - 38px);padding:0 20px 24px}.drawer-top{padding:22px 0 20px}.drawer-item{font-size:16px;min-height:52px}.buyer-status{padding:17px 14px}.drawer-section{padding:22px 0}.menu-toggle{width:36px}}
+
+.drawer-plain-links{padding-top:20px}.drawer-plain-links .drawer-item{min-height:48px;font-size:17px}.drawer-plain-links .drawer-item:not(:has(.drawer-icon)){gap:0}
 </style>
 </head>
 <body>
@@ -135,12 +137,29 @@ body.category-mode .menu-toggle{color:#171815}
   <button class="drawer-item" type="button" data-drawer-action="yacht-charter"><span class="drawer-icon">♒</span><span>Yacht Charter</span></button>
   <button class="drawer-item" type="button" data-drawer-action="vacation-rentals"><span class="drawer-icon">⌂</span><span>Vacation Rentals</span></button>
  </div>
- <div class="drawer-section"><h2>For Business</h2>
-  <button class="drawer-item" type="button" data-drawer-action="sell"><span class="drawer-icon">＋</span><span>List with AUREVÉ</span></button>
-  <button class="drawer-item" type="button" data-drawer-action="business"><span class="drawer-icon">▤</span><span>Professional seller services</span></button>
-  <button class="drawer-item" type="button" data-drawer-action="journal"><span class="drawer-icon">▧</span><span>Journal & inspiration</span></button>
+ <div class="drawer-section"><h2>Sell</h2>
+  <button class="drawer-item" type="button" data-drawer-action="sell"><span class="drawer-icon">▱</span><span>Sell as a Business / Agent</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="sell-home"><span class="drawer-icon">⌂</span><span>Sell Your Luxury Home</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="value-property"><span class="drawer-icon">⌂</span><span>Value your property</span></button>
  </div>
- <div class="drawer-bottom"><span>AUREVÉ</span><p>Rooted in Africa. Open to the world.</p><div><a href="#legal">Privacy</a><a href="#legal">Terms</a><a href="mailto:concierge@aureve.com">Contact</a></div></div>
+ <div class="drawer-section"><h2>For Agents</h2>
+  <button class="drawer-item" type="button" data-drawer-action="claim"><span class="drawer-icon">♙</span><span>Claim Your Account</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="agent-resources"><span class="drawer-icon">ⓘ</span><span>Agent Resources</span></button>
+ </div>
+ <div class="drawer-section"><h2>Discover</h2>
+  <button class="drawer-item" type="button" data-drawer-action="newsletter"><span class="drawer-icon">✉</span><span>Weekly Newsletter</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="journal"><span class="drawer-icon">▤</span><span>AUREVÉ Journal</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="agencies"><span class="drawer-icon">▦</span><span>Find Agencies</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="app"><span class="drawer-icon">▯</span><span>App</span></button>
+ </div>
+ <div class="drawer-section drawer-plain-links">
+  <button class="drawer-item" type="button" data-drawer-action="all-businesses">All Businesses</button>
+  <button class="drawer-item" type="button" data-drawer-action="help">Help & FAQ</button>
+  <button class="drawer-item" type="button" data-drawer-action="about">About</button>
+  <button class="drawer-item" type="button" data-drawer-action="contact">Contact</button>
+  <button class="drawer-item" type="button" data-drawer-action="signout">Sign Out</button>
+ </div>
+ <div class="drawer-bottom"><span>AUREVÉ</span><p>Rooted in Africa. Open to the world.</p><div><a href="#legal" data-drawer-action="privacy">Privacy</a><a href="#legal" data-drawer-action="terms">Terms</a><a href="mailto:concierge@aureve.com">Contact</a></div></div>
 </aside><nav class="category-nav" aria-label="Luxury categories"><a href="#categories">Real Estate</a><a href="#categories">Cars</a><a href="#categories">Yachts</a><a href="#categories">Watches</a><a href="#categories">Jets</a><a href="#categories">Helicopters</a><a href="#categories">Jewelry</a><a href="#categories">Collectibles</a><a href="#categories">Motorcycles</a><a href="#categories">Rentals</a><a href="#journal">Journal</a></nav><div class="feature-strip"><span>✦ Curated global discovery</span><span>✦ Africa-to-world perspective</span><span>✦ Private buyer enquiries</span><span>✦ Professional seller opportunities</span><span><label for="currencySelect">Currency</label> <select class="utility-select" id="currencySelect" aria-label="Display currency"><option value="USD">USD $</option><option value="UGX">UGX USh</option><option value="EUR">EUR €</option><option value="GBP">GBP £</option><option value="AED">AED د.إ</option><option value="ZAR">ZAR R</option></select></span></div>
 <main>
 <section class="hero" id="discover"><div class="hero-content"><div class="eyebrow">A world of distinction · From Africa to everywhere</div><h1>The exceptional,<br>discovered.</h1><p>A considered collection of remarkable homes, rare automobiles, timepieces and extraordinary assets from the world's most compelling places.</p><form class="searchbox" id="searchForm"><input id="query" aria-label="Search listings" placeholder="What are you looking for?"><select id="categorySelect" aria-label="Choose category"><option value="All">All categories</option><option>Real Estate</option><option>Cars</option><option>Yachts</option><option>Watches</option><option>Jets</option><option>Helicopters</option><option>Jewelry</option><option>Collectibles</option><option>Motorcycles</option><option>Extraordinary</option><option>Rentals</option></select><select id="regionSelect" aria-label="Choose region"><option value="Anywhere">Anywhere</option><option>Africa</option><option>Europe</option><option>Middle East</option><option>North America</option><option>Asia Pacific</option><option>South America</option><option>Uganda</option><option>Kenya</option><option>Tanzania</option><option>Rwanda</option><option>South Africa</option><option>Morocco</option><option>United Arab Emirates</option><option>United States</option><option>United Kingdom</option><option>France</option><option>Italy</option><option>Spain</option><option>Portugal</option><option>Switzerland</option><option>Canada</option><option>Australia</option><option>Japan</option></select><button type="submit">Explore</button></form></div></section>
@@ -291,7 +310,32 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sideDrawer.classLis
 document.getElementById("drawerViewMore").addEventListener("click",()=>{const expanded=document.getElementById("drawerViewMore").getAttribute("aria-expanded")==="true";document.getElementById("drawerMoreBuy").hidden=expanded;document.getElementById("drawerViewMore").setAttribute("aria-expanded",String(!expanded));document.getElementById("drawerViewMore").innerHTML=(expanded?"View more":"View less")+' <span>⌄</span>'});
 function goToCategory(name){closeSideDrawer();location.href="/?category="+encodeURIComponent(name)}
 document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>goToCategory(b.dataset.category)));
-document.querySelectorAll("[data-drawer-action]").forEach(b=>b.addEventListener("click",()=>{const action=b.dataset.drawerAction;closeSideDrawer();if(action==="saved"){document.getElementById("savedBtn").click();return}if(action==="messages"){document.getElementById("messages")?.scrollIntoView({behavior:"smooth"});toast("Your AUREVÉ messages area is ready to connect to account messaging.");return}if(action==="just-for-you"){document.getElementById("listings").scrollIntoView({behavior:"smooth"});return}if(action==="sell"||action==="business"){document.getElementById("sell")?.scrollIntoView({behavior:"smooth"});return}if(action==="journal"){document.getElementById("journal")?.scrollIntoView({behavior:"smooth"});return}toast(({searches:"Saved searches will be available when your AUREVÉ account is enabled.",properties:"Your property portfolio will be available through your seller account.",profile:"Profile management will be available when account sign-in is enabled.",settings:"Account settings will be available when account sign-in is enabled.","buyer-status":"Create an AUREVÉ profile to personalize your discovery.","yacht-charter":"Explore the Yachts category for charter enquiries.","vacation-rentals":"Explore Rentals for exceptional stays."})[action]||"This AUREVÉ service will be available here.")}));
+function drawerGo(id){const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});return el}return null}
+document.querySelectorAll("[data-drawer-action]").forEach(b=>b.addEventListener("click",()=>{
+ const action=b.dataset.drawerAction;closeSideDrawer();
+ if(action==="saved"){document.getElementById("savedBtn")?.click();return}
+ if(action==="messages"){drawerGo("messages");toast("Choose a listing to send an enquiry. A secure account inbox requires account sign-in.");return}
+ if(action==="just-for-you"){drawerGo("listings");return}
+ if(["sell","sell-home","value-property","business","agent-resources"].includes(action)){document.getElementById("sellerBtn")?.click();if(action==="sell-home")setTimeout(()=>{const sel=document.querySelector('#sellerForm [name="categories"]');if(sel)sel.value="Real Estate"},50);if(action==="value-property")setTimeout(()=>{const msg=document.querySelector('#sellerForm [name="message"]');if(msg)msg.value="I would like a valuation enquiry for my property."},50);return}
+ if(action==="claim"){toast("To claim an agency account, submit your business details through Sell as a Business / Agent. Verification will be required.");setTimeout(()=>document.getElementById("sellerBtn")?.click(),150);return}
+ if(action==="journal"){drawerGo("journal");return}
+ if(action==="newsletter"){drawerGo("newsletter");setTimeout(()=>document.querySelector('#newsletterForm input[type="email"]')?.focus(),400);return}
+ if(action==="agencies"||action==="all-businesses"){drawerGo("categories");return}
+ if(action==="app"){drawerGo("messages");toast("AUREVÉ is available as a mobile-friendly website. Native app store publishing is not yet connected.");return}
+ if(action==="contact"){location.href="mailto:concierge@aureve.com?subject=AUREVE%20Enquiry";return}
+ if(action==="privacy"||action==="terms"){drawerGo("footer");toast("Review AUREVÉ's published policies in the footer before transacting.");return}
+ if(action==="about"){drawerGo("discover");return}
+ if(action==="help"){drawerGo("messages");return}
+ if(action==="signout"){toast("No active sign-in session is connected on this version of AUREVÉ.");return}
+ if(action==="settings"){drawerGo("footer");document.getElementById("footerLanguage")?.focus();return}
+ if(action==="properties"){document.getElementById("sellerBtn")?.click();toast("Seller property management begins with a business listing application.");return}
+ if(action==="searches"){toast("Saved searches require a signed-in account; search and browse listings in the meantime.");return}
+ if(action==="profile"||action==="buyer-status"){toast("Account profiles and buyer status require account authentication, which is not yet connected.");return}
+ if(action==="yacht-charter"){goToCategory("Yachts");return}
+ if(action==="vacation-rentals"){goToCategory("Rentals");return}
+ if(action==="sell"||action==="business"){drawerGo("sell");return}
+ toast("This AUREVÉ service is not connected yet.");
+}));
 setupCategoryPage();
 if(!document.body.classList.contains("category-mode"))filterListings();
 </script></body></html>
