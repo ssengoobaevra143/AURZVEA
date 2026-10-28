@@ -15,21 +15,22 @@ module.exports = async function handler(req, res) {
     const where = ["status = 'published'"];
     if (category && category.toLowerCase() !== "all") {
       values.push(category);
-      where.push(`category = $${values.length}`);
+      where.push("category = $" + values.length);
     }
     if (q) {
-      values.push(`%${q.replace(/[\\%_]/g, "\\$&")}%`);
-      where.push(`(title ILIKE $ ${values.length} ESCAPE '\\\\' OR description ILIKE $${values.length} ESCAPE '\\\\' OR category ILIKE $${values.length} ESCAPE '\\\\')`.replace("$ ", "$"));
+      values.push("%" + q + "%");
+      const p = "$" + values.length;
+      where.push("(title ILIKE " + p + " OR description ILIKE " + p + " OR category ILIKE " + p + ")");
     }
     if (location) {
-      values.push(`%${location.replace(/[\\%_]/g, "\\$&")}%`);
-      where.push(`location ILIKE $${values.length} ESCAPE '\\\\'`);
+      values.push("%" + location + "%");
+      where.push("location ILIKE $" + values.length);
     }
     values.push(limit);
     const result = await pool.query(
-      `SELECT id, title, category, description, price_amount, price_currency, price_label, location, image_url, seller_name, featured, created_at
-       FROM listings WHERE ${where.join(" AND ")}
-       ORDER BY featured DESC, created_at DESC LIMIT $${values.length}`,
+      "SELECT id, title, category, description, price_amount, price_currency, price_label, location, image_url, seller_name, featured, created_at " +
+      "FROM listings WHERE " + where.join(" AND ") +
+      " ORDER BY featured DESC, created_at DESC LIMIT $" + values.length,
       values
     );
     return json(res, 200, { listings: result.rows, count: result.rowCount });
