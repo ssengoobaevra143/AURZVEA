@@ -69,11 +69,79 @@ body.category-mode footer{margin-top:0}
  body.category-mode .popular-make-card img{height:145px}
  body.category-mode #listings{padding:30px 18px 48px}
 }
+
+/* AUREVE side navigation drawer */
+.menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;align-items:center;border:1px solid transparent;background:transparent;cursor:pointer;color:inherit;flex:0 0 auto}
+.menu-toggle span{height:2px;width:25px;background:currentColor;display:block;transition:transform .2s,opacity .2s}
+.menu-toggle:hover{border-color:var(--gold)}
+.drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:1000;opacity:1;transition:opacity .25s}
+.drawer-backdrop[hidden]{display:none}
+.side-drawer{position:fixed;z-index:1001;right:0;top:0;height:100dvh;width:min(570px,88vw);background:#fff;color:#191a18;transform:translateX(102%);transition:transform .28s ease;overflow-y:auto;padding:0 30px 30px;box-shadow:-12px 0 36px rgba(0,0,0,.12);visibility:hidden}
+.side-drawer.open{transform:translateX(0);visibility:visible}
+.drawer-top{position:sticky;top:0;z-index:2;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:25px 0 23px;border-bottom:1px solid #dededb}
+.drawer-greeting{font-size:clamp(18px,3vw,26px);color:#777;font-weight:400}
+.drawer-close{font:36px/1 Arial,sans-serif;border:0;background:transparent;color:#171815;padding:0 0 4px 10px;cursor:pointer}
+.drawer-section{padding:25px 0 26px;border-bottom:1px solid #ddd}
+.drawer-section h2{margin:0 0 18px;color:#777;font-size:13px;letter-spacing:.13em;text-transform:uppercase;font-weight:600}
+.drawer-item{display:flex;align-items:center;gap:19px;width:100%;min-height:54px;text-align:left;border:0;background:transparent;padding:9px 0;color:#20211f;font-size:17px;cursor:pointer}
+.drawer-item:hover{color:#08777a}
+.drawer-icon{width:30px;flex:0 0 30px;text-align:center;font-size:27px;line-height:1;font-weight:300;color:#222}
+.drawer-item>span:nth-child(2){flex:1}
+.drawer-count{color:#aaa;font-size:15px}
+.buyer-status{width:100%;display:flex;align-items:center;gap:17px;padding:20px 18px;margin:24px 0 0;border:0;background:#d5e9e8;text-align:left;color:#20211f;cursor:pointer}
+.buyer-ring{width:55px;height:55px;flex:0 0 55px;border:5px solid #c8b178;border-left-color:#fff;border-radius:50%;display:grid;place-items:center;font:21px var(--serif)}
+.buyer-status>span:nth-child(2){flex:1}.buyer-status b{font-size:16px;font-weight:500;display:block;line-height:1.4}.buyer-status small{display:block;color:#777;font-size:13px;line-height:1.5;margin-top:4px}.buyer-arrow{font-size:34px}
+.drawer-category-section{padding-top:27px}
+.drawer-more{display:flex;align-items:center;gap:16px;border:0;background:transparent;color:#08777a;padding:15px 0 4px;font-size:17px;cursor:pointer}
+.drawer-more span{font-size:23px;transition:transform .2s}.drawer-more[aria-expanded="true"] span{transform:rotate(180deg)}
+.drawer-bottom{padding:28px 0 8px;text-align:center;color:#777}.drawer-bottom>span{font:26px var(--serif);letter-spacing:.16em;color:#242520}.drawer-bottom p{font-size:12px}.drawer-bottom div{display:flex;justify-content:center;gap:20px;font-size:12px}
+body.drawer-open{overflow:hidden}
+body.category-mode .menu-toggle{color:#171815}
+@media(max-width:600px){.side-drawer{width:calc(100vw - 38px);padding:0 20px 24px}.drawer-top{padding:22px 0 20px}.drawer-item{font-size:16px;min-height:52px}.buyer-status{padding:17px 14px}.drawer-section{padding:22px 0}.menu-toggle{width:36px}}
 </style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="#" aria-label="AUREVÉ home">AUREV<span>É</span></a><nav class="toplinks"><a href="#discover">Discover</a><a href="#listings">Exceptional finds</a><a href="#messages" id="messagesLink">Messages</a><a href="#journal">Journal</a><a href="#destinations">Destinations</a><a href="#sell">Sell</a><button class="outline-btn" id="savedBtn">Saved <span id="savedCount">0</span></button></nav></header>
-<nav class="category-nav" aria-label="Luxury categories"><a href="#categories">Real Estate</a><a href="#categories">Cars</a><a href="#categories">Yachts</a><a href="#categories">Watches</a><a href="#categories">Jets</a><a href="#categories">Helicopters</a><a href="#categories">Jewelry</a><a href="#categories">Collectibles</a><a href="#categories">Motorcycles</a><a href="#categories">Rentals</a><a href="#journal">Journal</a></nav><div class="feature-strip"><span>✦ Curated global discovery</span><span>✦ Africa-to-world perspective</span><span>✦ Private buyer enquiries</span><span>✦ Professional seller opportunities</span><span><label for="currencySelect">Currency</label> <select class="utility-select" id="currencySelect" aria-label="Display currency"><option value="USD">USD $</option><option value="UGX">UGX USh</option><option value="EUR">EUR €</option><option value="GBP">GBP £</option><option value="AED">AED د.إ</option><option value="ZAR">ZAR R</option></select></span></div>
+<header class="topbar"><a class="brand" href="/" aria-label="AUREVÉ home">AUREV<span>É</span></a><button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button><nav class="toplinks"><a href="#discover">Discover</a><a href="#listings">Exceptional finds</a><a href="#messages" id="messagesLink">Messages</a><a href="#journal">Journal</a><a href="#destinations">Destinations</a><a href="#sell">Sell</a><button class="outline-btn" id="savedBtn">Saved <span id="savedCount">0</span></button></nav></header>
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<aside class="side-drawer" id="sideDrawer" aria-label="AUREVÉ side navigation" aria-hidden="true">
+ <div class="drawer-top"><div class="drawer-greeting">Welcome to AUREVÉ</div><button type="button" id="drawerClose" class="drawer-close" aria-label="Close navigation menu">×</button></div>
+ <div class="drawer-section">
+  <h2>Activity</h2>
+  <button class="drawer-item" type="button" data-drawer-action="messages"><span class="drawer-icon">✉</span><span>Messages</span><span class="drawer-count" id="drawerMessageCount"></span></button>
+  <button class="drawer-item" type="button" data-drawer-action="just-for-you"><span class="drawer-icon">⌂</span><span>Just for You</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="saved"><span class="drawer-icon">♡</span><span>Saved Listings</span><span class="drawer-count" id="drawerSavedCount">0</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="searches"><span class="drawer-icon">♧</span><span>Saved Searches</span><span class="drawer-count">0</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="properties"><span class="drawer-icon">⌂</span><span>My Properties</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="profile"><span class="drawer-icon">♙</span><span>Profile</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="settings"><span class="drawer-icon">⚙</span><span>Settings</span></button>
+ </div>
+ <button class="buyer-status" type="button" data-drawer-action="buyer-status"><span class="buyer-ring">A</span><span><b>Discover with confidence</b><small>Build your AUREVÉ profile</small></span><span class="buyer-arrow">›</span></button>
+ <div class="drawer-section drawer-category-section"><h2>Buy</h2>
+  <button class="drawer-item" type="button" data-category="Real Estate"><span class="drawer-icon">⌂</span><span>Real Estate</span></button>
+  <button class="drawer-item" type="button" data-category="Cars"><span class="drawer-icon">♧</span><span>Cars</span></button>
+  <div id="drawerMoreBuy" hidden>
+   <button class="drawer-item" type="button" data-category="Watches"><span class="drawer-icon">◷</span><span>Watches</span></button>
+   <button class="drawer-item" type="button" data-category="Yachts"><span class="drawer-icon">♒</span><span>Yachts</span></button>
+   <button class="drawer-item" type="button" data-category="Jets"><span class="drawer-icon">✈</span><span>Jets</span></button>
+   <button class="drawer-item" type="button" data-category="Helicopters"><span class="drawer-icon">✧</span><span>Helicopters</span></button>
+   <button class="drawer-item" type="button" data-category="Jewelry"><span class="drawer-icon">◇</span><span>Jewelry</span></button>
+   <button class="drawer-item" type="button" data-category="Collectibles"><span class="drawer-icon">✦</span><span>Collectibles</span></button>
+   <button class="drawer-item" type="button" data-category="Motorcycles"><span class="drawer-icon">⚑</span><span>Motorcycles</span></button>
+  </div>
+  <button class="drawer-more" id="drawerViewMore" type="button" aria-expanded="false">View more <span>⌄</span></button>
+ </div>
+ <div class="drawer-section"><h2>Rent</h2>
+  <button class="drawer-item" type="button" data-category="Rentals"><span class="drawer-icon">✈</span><span>Jet Charter & Luxury Rentals</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="yacht-charter"><span class="drawer-icon">♒</span><span>Yacht Charter</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="vacation-rentals"><span class="drawer-icon">⌂</span><span>Vacation Rentals</span></button>
+ </div>
+ <div class="drawer-section"><h2>For Business</h2>
+  <button class="drawer-item" type="button" data-drawer-action="sell"><span class="drawer-icon">＋</span><span>List with AUREVÉ</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="business"><span class="drawer-icon">▤</span><span>Professional seller services</span></button>
+  <button class="drawer-item" type="button" data-drawer-action="journal"><span class="drawer-icon">▧</span><span>Journal & inspiration</span></button>
+ </div>
+ <div class="drawer-bottom"><span>AUREVÉ</span><p>Rooted in Africa. Open to the world.</p><div><a href="#legal">Privacy</a><a href="#legal">Terms</a><a href="mailto:concierge@aureve.com">Contact</a></div></div>
+</aside><nav class="category-nav" aria-label="Luxury categories"><a href="#categories">Real Estate</a><a href="#categories">Cars</a><a href="#categories">Yachts</a><a href="#categories">Watches</a><a href="#categories">Jets</a><a href="#categories">Helicopters</a><a href="#categories">Jewelry</a><a href="#categories">Collectibles</a><a href="#categories">Motorcycles</a><a href="#categories">Rentals</a><a href="#journal">Journal</a></nav><div class="feature-strip"><span>✦ Curated global discovery</span><span>✦ Africa-to-world perspective</span><span>✦ Private buyer enquiries</span><span>✦ Professional seller opportunities</span><span><label for="currencySelect">Currency</label> <select class="utility-select" id="currencySelect" aria-label="Display currency"><option value="USD">USD $</option><option value="UGX">UGX USh</option><option value="EUR">EUR €</option><option value="GBP">GBP £</option><option value="AED">AED د.إ</option><option value="ZAR">ZAR R</option></select></span></div>
 <main>
 <section class="hero" id="discover"><div class="hero-content"><div class="eyebrow">A world of distinction · From Africa to everywhere</div><h1>The exceptional,<br>discovered.</h1><p>A considered collection of remarkable homes, rare automobiles, timepieces and extraordinary assets from the world's most compelling places.</p><form class="searchbox" id="searchForm"><input id="query" aria-label="Search listings" placeholder="What are you looking for?"><select id="categorySelect" aria-label="Choose category"><option value="All">All categories</option><option>Real Estate</option><option>Cars</option><option>Yachts</option><option>Watches</option><option>Jets</option><option>Helicopters</option><option>Jewelry</option><option>Collectibles</option><option>Motorcycles</option><option>Extraordinary</option><option>Rentals</option></select><select id="regionSelect" aria-label="Choose region"><option value="Anywhere">Anywhere</option><option>Africa</option><option>Europe</option><option>Middle East</option><option>North America</option><option>Asia Pacific</option><option>South America</option><option>Uganda</option><option>Kenya</option><option>Tanzania</option><option>Rwanda</option><option>South Africa</option><option>Morocco</option><option>United Arab Emirates</option><option>United States</option><option>United Kingdom</option><option>France</option><option>Italy</option><option>Spain</option><option>Portugal</option><option>Switzerland</option><option>Canada</option><option>Australia</option><option>Japan</option></select><button type="submit">Explore</button></form></div></section>
 <section class="section" id="categories"><div class="section-head"><div><div class="kicker">Explore the collection</div><h2>Exceptional, in every form.</h2></div><p class="subcopy">From landmark properties to rare machines and objects of enduring value, explore every world of luxury in one place.</p></div><div class="category-grid" id="categoryGrid"></div></section>
@@ -214,6 +282,16 @@ function setupCategoryPage(){
  document.querySelectorAll(".category-nav a").forEach(a=>{if(a.textContent.trim().toLowerCase()===known.name.toLowerCase())a.setAttribute("aria-current","page")});
  filterListings();
 }
+
+const sideDrawer=document.getElementById("sideDrawer"),drawerBackdrop=document.getElementById("drawerBackdrop"),menuToggle=document.getElementById("menuToggle");
+function openSideDrawer(){sideDrawer.classList.add("open");sideDrawer.setAttribute("aria-hidden","false");drawerBackdrop.hidden=false;document.body.classList.add("drawer-open");menuToggle.setAttribute("aria-expanded","true");document.getElementById("drawerClose").focus()}
+function closeSideDrawer(){sideDrawer.classList.remove("open");sideDrawer.setAttribute("aria-hidden","true");drawerBackdrop.hidden=true;document.body.classList.remove("drawer-open");menuToggle.setAttribute("aria-expanded","false")}
+menuToggle.addEventListener("click",openSideDrawer);document.getElementById("drawerClose").addEventListener("click",closeSideDrawer);drawerBackdrop.addEventListener("click",closeSideDrawer);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sideDrawer.classList.contains("open")){closeSideDrawer();menuToggle.focus()}});
+document.getElementById("drawerViewMore").addEventListener("click",()=>{const expanded=document.getElementById("drawerViewMore").getAttribute("aria-expanded")==="true";document.getElementById("drawerMoreBuy").hidden=expanded;document.getElementById("drawerViewMore").setAttribute("aria-expanded",String(!expanded));document.getElementById("drawerViewMore").innerHTML=(expanded?"View more":"View less")+' <span>⌄</span>'});
+function goToCategory(name){closeSideDrawer();location.href="/?category="+encodeURIComponent(name)}
+document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>goToCategory(b.dataset.category)));
+document.querySelectorAll("[data-drawer-action]").forEach(b=>b.addEventListener("click",()=>{const action=b.dataset.drawerAction;closeSideDrawer();if(action==="saved"){document.getElementById("savedBtn").click();return}if(action==="messages"){document.getElementById("messages")?.scrollIntoView({behavior:"smooth"});toast("Your AUREVÉ messages area is ready to connect to account messaging.");return}if(action==="just-for-you"){document.getElementById("listings").scrollIntoView({behavior:"smooth"});return}if(action==="sell"||action==="business"){document.getElementById("sell")?.scrollIntoView({behavior:"smooth"});return}if(action==="journal"){document.getElementById("journal")?.scrollIntoView({behavior:"smooth"});return}toast(({searches:"Saved searches will be available when your AUREVÉ account is enabled.",properties:"Your property portfolio will be available through your seller account.",profile:"Profile management will be available when account sign-in is enabled.",settings:"Account settings will be available when account sign-in is enabled.","buyer-status":"Create an AUREVÉ profile to personalize your discovery.","yacht-charter":"Explore the Yachts category for charter enquiries.","vacation-rentals":"Explore Rentals for exceptional stays."})[action]||"This AUREVÉ service will be available here.")}));
 setupCategoryPage();
 if(!document.body.classList.contains("category-mode"))filterListings();
 </script></body></html>
