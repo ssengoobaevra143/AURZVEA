@@ -1,0 +1,12 @@
+{
+  "name": "aureve-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AUREVÉ luxury marketplace",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}
